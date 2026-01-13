@@ -4,92 +4,215 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XADDERS | Street & Underground</title>
+
+<!-- FUENTES -->
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#000;}
-header{display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:2px solid #000;}
-header img{height:70px;}
-nav a{margin-left:15px;text-decoration:none;color:#000;font-weight:bold;}
-.hero{text-align:center;padding:60px 20px;}
-.hero h1{font-size:48px;}
-.hero span{color:#d60000;}
-.catalogo{padding:40px 20px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
-.card{border:1px solid #000;padding:15px;text-align:center;}
-.card img{width:100%;height:320px;object-fit:cover;cursor:pointer;}
-.zoom-btn{display:block;margin-top:6px;color:#d60000;font-weight:bold;cursor:pointer;}
-.card a{display:inline-block;margin-top:10px;padding:10px 15px;border:1px solid #000;text-decoration:none;color:#000;}
-.card a:hover{background:#000;color:#fff;}
-.contacto{background:#000;color:#fff;text-align:center;padding:40px 20px;}
-.contacto a{display:inline-block;margin:10px;padding:12px 20px;border:1px solid #fff;color:#fff;text-decoration:none;}
-footer{text-align:center;padding:20px;}
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);justify-content:center;align-items:center;}
-.modal img{max-width:95%;max-height:95%;}
-.modal span{position:absolute;top:20px;right:30px;font-size:40px;color:#fff;cursor:pointer;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#0b0b0b;
+  color:#fff;
+  font-family:'Montserrat',sans-serif;
+}
+
+/* NAV */
+nav{
+  background:#000;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:999;
+}
+nav a{
+  color:#fff;
+  margin-left:20px;
+  text-decoration:none;
+  font-size:18px;
+}
+nav a:hover{color:#e60000}
+
+/* HERO */
+.hero{
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:radial-gradient(circle at top,#111,#000);
+}
+.hero-logo{
+  font-family:'Rubik Dirt',cursive;
+  font-size:110px;
+  letter-spacing:4px;
+}
+.hero p{
+  margin-top:20px;
+  max-width:700px;
+  font-size:20px;
+  opacity:.85;
+}
+.hero button{
+  margin-top:40px;
+  padding:18px 45px;
+  font-size:22px;
+  background:#e60000;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+}
+.hero button:hover{background:#ff0000}
+
+/* SECCIONES */
+.section{
+  padding:90px 20px;
+  text-align:center;
+}
+.section h2{
+  font-size:50px;
+  margin-bottom:30px;
+}
+
+/* CATALOGO */
+.catalog-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  max-width:1100px;
+  margin:auto;
+}
+.cat-box{
+  background:#111;
+  padding:40px 20px;
+  cursor:pointer;
+  border:1px solid #222;
+}
+.cat-box:hover{background:#1a1a1a}
+.cat-box h3{font-size:26px}
+.cat-box p{font-size:14px;margin-top:10px;opacity:.8}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,.95);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+.modal-content{
+  background:#111;
+  padding:40px;
+  max-width:900px;
+  width:90%;
+}
+.close{
+  text-align:right;
+  cursor:pointer;
+  font-size:22px;
+}
+
+/* OFERTAS */
+.offers{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  max-width:1000px;
+  margin:auto;
+}
+.offer-box{
+  background:#140000;
+  padding:30px;
+  border:1px dashed #e60000;
+}
+.offer-box h3{color:#e60000}
+.offer-box p{margin-top:10px;font-size:14px}
+
+/* FOOTER */
+footer{
+  background:#000;
+  padding:30px;
+  text-align:center;
+  font-size:14px;
+}
 </style>
 </head>
 
 <body>
 
-<header>
-<img src="logo-xadders.png" alt="XADDERS">
 <nav>
-<a href="#catalogo">Catálogo</a>
-<a href="#contacto">Contacto</a>
-<a href="https://www.instagram.com/xadderscom/" target="_blank">Instagram</a>
+  <strong>XADDERS</strong>
+  <div>
+    <a href="#inicio">Inicio</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#quienes">Quiénes somos</a>
+    <a href="#ofertas">Ofertas</a>
+    <a href="https://www.instagram.com/xadderscom/" target="_blank">Instagram</a>
+    <a href="#contacto">Contacto</a>
+  </div>
 </nav>
-</header>
 
-<section class="hero">
-<h1>X<span>ADDERS</span></h1>
-<p>Streetwear • Underground • Distribución independiente</p>
+<section class="hero" id="inicio">
+  <div class="hero-logo">XADDERS</div>
+  <p>Moda street y underground para quienes no siguen tendencias, las rompen.</p>
+  <button onclick="document.getElementById('catalogo').scrollIntoView()">VER CATÁLOGO</button>
 </section>
 
-<section class="catalogo" id="catalogo">
-<h2 style="text-align:center;">Catálogo</h2>
-<div class="grid">
+<section class="section" id="catalogo">
+<h2>Catálogo</h2>
+<div class="catalog-grid">
+  <div class="cat-box" onclick="openModal('Hoodies')"><h3>Hoodies</h3><p>Prendas urbanas con actitud.</p></div>
+  <div class="cat-box" onclick="openModal('Conjuntos')"><h3>Conjuntos</h3><p>Fits completos listos para la calle.</p></div>
+  <div class="cat-box" onclick="openModal('Gorras')"><h3>Gorras</h3><p>Identidad y flow.</p></div>
+  <div class="cat-box" onclick="openModal('Zapatos')"><h3>Zapatos</h3><p>Resistencia y estilo.</p></div>
 
-<script>
-for(let i=1;i<=33;i++){
-document.write(`
-<div class="card">
-<img src="producto${i}.jpg" onclick="openModal(this.src)">
-<span class="zoom-btn" onclick="openModal('producto${i}.jpg')">Ver imagen en grande</span>
-<p>Producto XADDERS</p>
-<a href="https://wa.me/${i%2?573156941090:573106154908}" target="_blank">
-Preguntar por este artículo
-</a>
-</div>
-`);
-}
-</script>
-
+  <div class="cat-box" onclick="openModal('Camisas')"><h3>Camisas</h3><p>Streetwear versátil.</p></div>
+  <div class="cat-box" onclick="openModal('Relojes')"><h3>Relojes</h3><p>Detalles que destacan.</p></div>
+  <div class="cat-box" onclick="openModal('Bolsos')"><h3>Bolsos</h3><p>Función y diseño urbano.</p></div>
+  <div class="cat-box" onclick="openModal('Billeteras')"><h3>Billeteras</h3><p>Compactas y underground.</p></div>
 </div>
 </section>
 
-<section class="contacto" id="contacto">
-<h2>Contacto directo</h2>
-<a href="https://wa.me/573156941090" target="_blank">WhatsApp 315 694 1090</a>
-<a href="https://wa.me/573106154908" target="_blank">WhatsApp 310 615 4908</a>
+<section class="section" id="quienes">
+<h2>Quiénes somos</h2>
+<p style="max-width:800px;margin:auto">
+XADDERS es una marca freelancer enfocada en la moda street y underground.
+Distribuimos ropa y accesorios para quienes buscan identidad, actitud y diferencia.
+</p>
+</section>
+
+<section class="section" id="ofertas">
+<h2>Ofertas</h2>
+<div class="offers">
+  <div class="offer-box"><h3>DROP-XA</h3><p>Edición limitada</p></div>
+  <div class="offer-box"><h3>BLK-URB</h3><p>Street pack</p></div>
+  <div class="offer-box"><h3>RØØT</h3><p>Underground deal</p></div>
+</div>
+</section>
+
+<section class="section" id="contacto">
+<h2>Contacto</h2>
+<p>WhatsApp</p>
+<p>📱 315 694 1090</p>
+<p>📱 310 615 4908</p>
 </section>
 
 <footer>
-© 2026 XADDERS · Street & Underground
+© XADDERS — Street & Underground
 </footer>
 
 <div class="modal" id="modal">
-<span onclick="closeModal()">&times;</span>
-<img id="modal-img">
-</div>
+  <div class="modal-content">
+    <div class="close" onclick="closeModal()">✖</div>
+    <h2 id="modalTitle">
 
-<script>
-function openModal(src){
-document.getElementById("modal").style.display="flex";
-document.getElementById("modal-img").src=src;
-}
-function closeModal(){
-document.getElementById("modal").style.display="none";
-}
-</script>
 
 </body>
 </html>
+
