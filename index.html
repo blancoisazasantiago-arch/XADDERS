@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XADDERS | Street & Underground</title>
 
-<!-- FUENTES -->
 <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Anton&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
@@ -18,11 +18,19 @@ body{
   overflow-x:hidden;
 }
 
+/* GLITCH */
+@keyframes glitch{
+  0%{text-shadow:2px 2px red}
+  20%{text-shadow:-2px -2px white}
+  40%{text-shadow:2px -2px red}
+  60%{text-shadow:-2px 2px white}
+  100%{text-shadow:2px 2px red}
+}
+
 /* PRELOADER */
 #loader{
   position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
+  inset:0;
   background:#000;
   display:flex;
   justify-content:center;
@@ -33,13 +41,6 @@ body{
   font-family:'Rubik Dirt';
   font-size:60px;
   animation:glitch 1s infinite;
-}
-@keyframes glitch{
-  0%{text-shadow:2px 2px red}
-  20%{text-shadow:-2px -2px white}
-  40%{text-shadow:2px -2px red}
-  60%{text-shadow:-2px 2px white}
-  100%{text-shadow:2px 2px red}
 }
 
 /* HEADER */
@@ -52,60 +53,60 @@ header{
   border-bottom:2px solid #d60000;
 }
 header img{height:50px}
+
+/* NAV CON LÍNEAS */
 nav a{
+  position:relative;
   margin-left:20px;
+  padding-left:20px;
   color:#fff;
   text-decoration:none;
   font-weight:bold;
   font-size:16px;
-  letter-spacing:1px;
 }
-nav a:hover{color:#d60000}
+nav a::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:2px;
+  height:18px;
+  background:#444;
+}
+nav a:first-child::before{display:none}
+nav a:hover{
+  color:#d60000;
+}
+nav a:hover::before{
+  background:#d60000;
+}
 
 /* HERO */
 .hero{
-  position:relative;
   text-align:center;
   padding:160px 20px;
   background:radial-gradient(circle,#111,#000);
-  overflow:hidden;
-}
-.hero::before{
-  content:"STREET • UNDERGROUND • NO RULES";
-  position:absolute;
-  top:15%;
-  left:-10%;
-  font-family:'Anton';
-  font-size:120px;
-  color:rgba(255,255,255,0.03);
-  transform:rotate(-10deg);
 }
 .hero-logo{
   font-family:'Rubik Dirt';
   font-size:110px;
-  letter-spacing:4px;
   animation:glitch 2s infinite;
 }
 .hero-logo span{color:#d60000}
-.hero p{
-  font-size:20px;
-  margin:20px 0;
-}
+.hero p{font-size:20px;margin:20px 0}
 .hero button{
   margin:15px;
   padding:18px 40px;
   font-size:20px;
-  border:2px solid #fff;
   background:transparent;
   color:#fff;
+  border:2px solid #fff;
   cursor:pointer;
-  letter-spacing:2px;
-  transition:.2s;
 }
 .hero button:hover{
   background:#d60000;
   border-color:#d60000;
-  transform:translateY(-3px);
 }
 
 /* SECCIONES */
@@ -119,13 +120,10 @@ nav a:hover{color:#d60000}
   to{opacity:1;transform:translateY(0)}
 }
 
-/* CATALOGO */
-#catalogo{
-  background:#0d0d0d;
-}
+/* CATÁLOGO */
 .menu{text-align:center;margin-bottom:40px}
 .menu button{
-  margin:12px;
+  margin:10px;
   padding:20px 34px;
   font-size:22px;
   font-family:'Anton';
@@ -133,69 +131,77 @@ nav a:hover{color:#d60000}
   color:#fff;
   border:2px solid #fff;
   cursor:pointer;
-  transition:.2s;
 }
 .menu button:hover{
   background:#d60000;
   border-color:#d60000;
-  transform:scale(1.05);
 }
 
-/* GRID */
+/* GRID ALINEADO */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
+  align-items:stretch;
 }
 
-/* CARDS */
+/* CARDS ALINEADAS */
 .card{
   background:#fff;
   color:#000;
   padding:15px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
   text-align:center;
-  transition:.2s;
 }
-.card:hover{transform:translateY(-6px)}
 .card img{
   width:100%;
   height:320px;
   object-fit:cover;
   cursor:pointer;
 }
-.zoom{
-  color:#d60000;
+.card p{
   font-weight:bold;
-  cursor:pointer;
+  margin:12px 0;
 }
 .card a{
-  display:inline-block;
-  margin-top:12px;
+  margin-top:auto;
   padding:10px 18px;
   border:2px solid #000;
   text-decoration:none;
   color:#000;
 }
-.card a:hover{background:#000;color:#fff}
-
-/* OFERTAS */
-#ofertas{
-  background:#080808;
+.card a:hover{
+  background:#000;
+  color:#fff;
 }
-#ofertas::before{
-  content:"DROP • SALE • LIMITED";
-  position:absolute;
+
+/* QUIÉNES SOMOS */
+.quienes-title{
   font-family:'Anton';
-  font-size:130px;
-  color:rgba(214,0,0,0.05);
-  transform:rotate(-12deg);
+  font-size:58px;
+  letter-spacing:4px;
+  text-align:center;
+  margin-bottom:35px;
+  animation:glitch 2s infinite;
+}
+.quienes-text{
+  max-width:950px;
+  margin:auto;
+  text-align:center;
+  font-size:22px;
+  line-height:1.8;
+  opacity:0;
+  transform:translateY(40px);
+  animation:fadeStreet .9s ease forwards;
+}
+@keyframes fadeStreet{
+  to{opacity:1;transform:translateY(0)}
 }
 
 /* CONTACTO */
-#contacto{
-  background:#000;
-  text-align:center;
-}
+#contacto{text-align:center}
 #contacto a{
   display:block;
   max-width:260px;
@@ -204,7 +210,6 @@ nav a:hover{color:#d60000}
   border:2px solid #fff;
   color:#fff;
   text-decoration:none;
-  font-size:18px;
 }
 #contacto a:hover{
   background:#d60000;
@@ -215,33 +220,32 @@ nav a:hover{color:#d60000}
 .modal{
   display:none;
   position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
+  inset:0;
   background:rgba(0,0,0,.95);
   justify-content:center;
   align-items:center;
-  z-index:1000;
 }
 .modal img{max-width:95%;max-height:95%}
 .modal span{
   position:absolute;
-  top:20px;right:30px;
+  top:20px;
+  right:30px;
   font-size:40px;
   cursor:pointer;
 }
 
+/* FOOTER */
 footer{
   background:#000;
   text-align:center;
   padding:15px;
-  font-size:14px;
   color:#777;
 }
 
 /* MOBILE */
 @media(max-width:768px){
   .hero-logo{font-size:70px}
-  .menu button{font-size:18px;padding:16px 22px}
+  nav a{font-size:14px}
 }
 </style>
 </head>
@@ -271,16 +275,18 @@ footer{
 
 <section id="catalogo" class="section">
 <h2 style="text-align:center;font-family:'Anton'">CATÁLOGO</h2>
+
 <div class="menu">
 <button onclick="load('Hoodies',1)">HOODIES</button>
 <button onclick="load('Conjuntos',51)">CONJUNTOS</button>
 <button onclick="load('Gorras',101)">GORRAS</button>
-<button onclick="load('Zapatos',151)">ZAPATOS</button>
-<button onclick="load('Camisas',201)">CAMISAS</button>
+<button onclick="load('Camisas',151)">CAMISAS</button>
+<button onclick="load('Zapatos',201)">ZAPATOS</button>
 <button onclick="load('Relojes',251)">RELOJES</button>
 <button onclick="load('Bolsos',301)">BOLSOS</button>
-<button onclick="load('Novedades',351)">NOVEDADES</button>
+<button onclick="load('Billeteras',351)">BILLETERAS</button>
 </div>
+
 <h3 id="title" style="text-align:center"></h3>
 <p id="desc" style="text-align:center;max-width:800px;margin:auto"></p>
 <div class="grid" id="grid"></div>
@@ -292,10 +298,13 @@ footer{
 </section>
 
 <section id="quienes" class="section">
-<h2 style="text-align:center;font-family:'Anton'">QUIÉNES SOMOS</h2>
-<p style="max-width:800px;margin:auto;text-align:center">
-XADDERS es una marca freelancer de moda street y underground.
-No seguimos tendencias, las rompemos.
+<h2 class="quienes-title">QUIÉNES SOMOS</h2>
+<p class="quienes-text">
+XADDERS es una compañía freelancer enfocada en la venta de productos de moda
+con identidad street y underground. Distribuimos ropa, calzado y accesorios
+que rompen con lo convencional y contrastan con la moda actual.
+<br><br>
+No seguimos tendencias. Creamos actitud.
 </p>
 </section>
 
@@ -313,17 +322,17 @@ No seguimos tendencias, las rompemos.
 </div>
 
 <script>
-window.onload=()=>{setTimeout(()=>{document.getElementById('loader').style.display='none'},800)}
+window.onload=()=>setTimeout(()=>loader.style.display='none',800)
 
 const descriptions={
 Hoodies:"Hoodies urbanos con actitud underground.",
 Conjuntos:"Sets completos para flow callejero.",
 Gorras:"Accesorios clave del streetwear.",
-Zapatos:"Calzado urbano listo para la calle.",
 Camisas:"Camisas con esencia street.",
+Zapatos:"Calzado urbano listo para la calle.",
 Relojes:"Detalles que elevan el outfit.",
 Bolsos:"Funcionalidad con estilo urbano.",
-Novedades:"Drops nuevos y exclusivos."
+Billeteras:"Diseño compacto con actitud street."
 }
 
 function show(id){
@@ -332,15 +341,13 @@ document.getElementById(id).style.display='block'
 }
 
 function load(name,start){
-document.getElementById('title').innerText=name
-document.getElementById('desc').innerText=descriptions[name]
-const g=document.getElementById('grid')
-g.innerHTML=''
+title.innerText=name
+desc.innerText=descriptions[name]
+grid.innerHTML=''
 for(let i=start;i<start+50;i++){
-g.innerHTML+=`
+grid.innerHTML+=`
 <div class="card">
 <img src="producto${i}.jpg" onclick="openModal(this.src)">
-<div class="zoom" onclick="openModal('producto${i}.jpg')">VER IMAGEN</div>
 <p>${name} XADDERS</p>
 <a href="https://wa.me/${i%2?573156941090:573106154908}">PREGUNTAR</a>
 </div>`
@@ -348,13 +355,17 @@ g.innerHTML+=`
 }
 
 function openModal(src){
-document.getElementById('modal').style.display='flex'
-document.getElementById('modalImg').src=src
+modal.style.display='flex'
+modalImg.src=src
 }
 function closeModal(){
-document.getElementById('modal').style.display='none'
+modal.style.display='none'
 }
 </script>
 
 </body>
 </html>
+
+</body>
+</html>
+
