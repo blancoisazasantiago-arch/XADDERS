@@ -10,15 +10,24 @@
 <style>
 *{box-sizing:border-box}
 
+/* ===== FONDO UNDERGROUND ===== */
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:#0a0a0a;
   color:#fff;
   overflow-x:hidden;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.02) 0px,
+      rgba(255,255,255,.02) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    radial-gradient(circle at top,#111,#000 70%);
 }
 
-/* GLITCH */
+/* ===== GLITCH ===== */
 @keyframes glitch{
   0%{text-shadow:2px 2px red}
   20%{text-shadow:-2px -2px white}
@@ -27,7 +36,7 @@ body{
   100%{text-shadow:2px 2px red}
 }
 
-/* PRELOADER */
+/* ===== PRELOADER ===== */
 #loader{
   position:fixed;
   inset:0;
@@ -43,7 +52,7 @@ body{
   animation:glitch 1s infinite;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 header{
   display:flex;
   justify-content:space-between;
@@ -54,15 +63,14 @@ header{
 }
 header img{height:50px}
 
-/* NAV CON LÍNEAS */
+/* ===== NAV ===== */
 nav a{
   position:relative;
-  margin-left:20px;
-  padding-left:20px;
+  margin-left:28px;
+  padding-left:22px;
   color:#fff;
   text-decoration:none;
   font-weight:bold;
-  font-size:16px;
 }
 nav a::before{
   content:"";
@@ -75,18 +83,13 @@ nav a::before{
   background:#444;
 }
 nav a:first-child::before{display:none}
-nav a:hover{
-  color:#d60000;
-}
-nav a:hover::before{
-  background:#d60000;
-}
+nav a:hover{color:#d60000}
+nav a:hover::before{background:#d60000}
 
-/* HERO */
+/* ===== HERO ===== */
 .hero{
   text-align:center;
-  padding:160px 20px;
-  background:radial-gradient(circle,#111,#000);
+  padding:170px 20px;
 }
 .hero-logo{
   font-family:'Rubik Dirt';
@@ -94,7 +97,7 @@ nav a:hover::before{
   animation:glitch 2s infinite;
 }
 .hero-logo span{color:#d60000}
-.hero p{font-size:20px;margin:20px 0}
+.hero p{font-size:22px;margin:20px 0}
 .hero button{
   margin:15px;
   padding:18px 40px;
@@ -109,10 +112,10 @@ nav a:hover::before{
   border-color:#d60000;
 }
 
-/* SECCIONES */
+/* ===== SECCIONES ===== */
 .section{
   display:none;
-  padding:80px 20px;
+  padding:90px 20px;
   animation:fadeUp .7s ease;
 }
 @keyframes fadeUp{
@@ -120,8 +123,8 @@ nav a:hover::before{
   to{opacity:1;transform:translateY(0)}
 }
 
-/* CATÁLOGO */
-.menu{text-align:center;margin-bottom:40px}
+/* ===== CATÁLOGO ===== */
+.menu{text-align:center;margin-bottom:45px}
 .menu button{
   margin:10px;
   padding:20px 34px;
@@ -137,22 +140,20 @@ nav a:hover::before{
   border-color:#d60000;
 }
 
-/* GRID ALINEADO */
+/* ===== GRID ===== */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
-  align-items:stretch;
 }
 
-/* CARDS ALINEADAS */
+/* ===== CARD ===== */
 .card{
   background:#fff;
   color:#000;
   padding:15px;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
   text-align:center;
 }
 .card img{
@@ -177,11 +178,10 @@ nav a:hover::before{
   color:#fff;
 }
 
-/* QUIÉNES SOMOS */
+/* ===== QUIÉNES SOMOS ===== */
 .quienes-title{
   font-family:'Anton';
-  font-size:58px;
-  letter-spacing:4px;
+  font-size:60px;
   text-align:center;
   margin-bottom:35px;
   animation:glitch 2s infinite;
@@ -190,17 +190,11 @@ nav a:hover::before{
   max-width:950px;
   margin:auto;
   text-align:center;
-  font-size:22px;
-  line-height:1.8;
-  opacity:0;
-  transform:translateY(40px);
-  animation:fadeStreet .9s ease forwards;
-}
-@keyframes fadeStreet{
-  to{opacity:1;transform:translateY(0)}
+  font-size:24px;
+  line-height:1.9;
 }
 
-/* CONTACTO */
+/* ===== CONTACTO ===== */
 #contacto{text-align:center}
 #contacto a{
   display:block;
@@ -216,7 +210,7 @@ nav a:hover::before{
   border-color:#d60000;
 }
 
-/* MODAL */
+/* ===== MODAL ===== */
 .modal{
   display:none;
   position:fixed;
@@ -234,18 +228,12 @@ nav a:hover::before{
   cursor:pointer;
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer{
   background:#000;
   text-align:center;
   padding:15px;
   color:#777;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .hero-logo{font-size:70px}
-  nav a{font-size:14px}
 }
 </style>
 </head>
@@ -277,14 +265,14 @@ footer{
 <h2 style="text-align:center;font-family:'Anton'">CATÁLOGO</h2>
 
 <div class="menu">
-<button onclick="load('Hoodies',1)">HOODIES</button>
-<button onclick="load('Conjuntos',51)">CONJUNTOS</button>
-<button onclick="load('Gorras',101)">GORRAS</button>
-<button onclick="load('Camisas',151)">CAMISAS</button>
-<button onclick="load('Zapatos',201)">ZAPATOS</button>
-<button onclick="load('Relojes',251)">RELOJES</button>
-<button onclick="load('Bolsos',301)">BOLSOS</button>
-<button onclick="load('Billeteras',351)">BILLETERAS</button>
+<button onclick="load('Hoodies')">HOODIES</button>
+<button onclick="load('Conjuntos')">CONJUNTOS</button>
+<button onclick="load('Gorras')">GORRAS</button>
+<button onclick="load('Camisas')">CAMISAS</button>
+<button onclick="load('Zapatos')">ZAPATOS</button>
+<button onclick="load('Relojes')">RELOJES</button>
+<button onclick="load('Bolsos')">BOLSOS</button>
+<button onclick="load('Billeteras')">BILLETERAS</button>
 </div>
 
 <h3 id="title" style="text-align:center"></h3>
@@ -294,16 +282,14 @@ footer{
 
 <section id="ofertas" class="section">
 <h2 style="text-align:center;font-family:'Anton'">OFERTAS</h2>
-<p style="text-align:center">Drops limitados y piezas exclusivas</p>
+<p style="text-align:center">✖✖ DROP LIMITADO ✖✖</p>
 </section>
 
 <section id="quienes" class="section">
 <h2 class="quienes-title">QUIÉNES SOMOS</h2>
 <p class="quienes-text">
 XADDERS es una compañía freelancer enfocada en la venta de productos de moda
-con identidad street y underground. Distribuimos ropa, calzado y accesorios
-que rompen con lo convencional y contrastan con la moda actual.
-<br><br>
+con identidad street y underground.<br><br>
 No seguimos tendencias. Creamos actitud.
 </p>
 </section>
@@ -325,47 +311,58 @@ No seguimos tendencias. Creamos actitud.
 window.onload=()=>setTimeout(()=>loader.style.display='none',800)
 
 const descriptions={
-Hoodies:"Hoodies urbanos con actitud underground.",
-Conjuntos:"Sets completos para flow callejero.",
-Gorras:"Accesorios clave del streetwear.",
-Camisas:"Camisas con esencia street.",
-Zapatos:"Calzado urbano listo para la calle.",
-Relojes:"Detalles que elevan el outfit.",
-Bolsos:"Funcionalidad con estilo urbano.",
-Billeteras:"Diseño compacto con actitud street."
+  Hoodies:"Hoodies urbanos con actitud underground.",
+  Conjuntos:"Sets completos para flow callejero.",
+  Gorras:"Accesorios clave del streetwear.",
+  Camisas:"Camisas con esencia street.",
+  Zapatos:"Calzado urbano listo para la calle.",
+  Relojes:"Detalles que elevan el outfit.",
+  Bolsos:"Funcionalidad con estilo urbano.",
+  Billeteras:"Diseño compacto con actitud street."
+}
+
+const catalogo={
+  Hoodies:{inicio:1,cantidad:12},
+  Conjuntos:{inicio:27,cantidad:8},
+  Gorras:{inicio:101,cantidad:15},
+  Camisas:{inicio:141,cantidad:10},
+  Zapatos:{inicio:201,cantidad:9},
+  Relojes:{inicio:271,cantidad:4},
+  Bolsos:{inicio:301,cantidad:6},
+  Billeteras:{inicio:351,cantidad:5}
 }
 
 function show(id){
-document.querySelectorAll('.section').forEach(s=>s.style.display='none')
-document.getElementById(id).style.display='block'
+  document.querySelectorAll('.section').forEach(s=>s.style.display='none')
+  document.getElementById(id).style.display='block'
 }
 
-function load(name,start){
-title.innerText=name
-desc.innerText=descriptions[name]
-grid.innerHTML=''
-for(let i=start;i<start+50;i++){
-grid.innerHTML+=`
-<div class="card">
-<img src="producto${i}.jpg" onclick="openModal(this.src)">
-<p>${name} XADDERS</p>
-<a href="https://wa.me/${i%2?573156941090:573106154908}">PREGUNTAR</a>
-</div>`
-}
+function load(name){
+  title.innerText=name
+  desc.innerText=descriptions[name]
+  grid.innerHTML=''
+
+  let start=catalogo[name].inicio
+  let total=catalogo[name].cantidad
+
+  for(let i=start;i<start+total;i++){
+    grid.innerHTML+=`
+    <div class="card">
+      <img src="producto${i}.jpg" onclick="openModal(this.src)">
+      <p>${name} XADDERS</p>
+      <a href="https://wa.me/${i%2?573156941090:573106154908}">PREGUNTAR</a>
+    </div>`
+  }
 }
 
 function openModal(src){
-modal.style.display='flex'
-modalImg.src=src
+  modal.style.display='flex'
+  modalImg.src=src
 }
 function closeModal(){
-modal.style.display='none'
+  modal.style.display='none'
 }
 </script>
 
 </body>
 </html>
-
-</body>
-</html>
-
